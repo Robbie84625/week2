@@ -37,7 +37,7 @@ find_and_print(question1);
 第二題
 以薪水比例為獎金標準：
 職位加給：CEO和業務獎金為薪水的0% ，工程師獎金為薪水的10%
-績效加給：above average:2000 ，average:1000，below average:0
+績效加給：above average:獎金為2000 ，average:獎金為1000，below average:獎金為0
 */ 
 
 function calculateSumOfBonus(data) 
