@@ -31,8 +31,8 @@ find_and_print(openFile("question1.json"))
 
 #第二題
 # 以薪水比例為獎金標準：
-# 職位加給：CEO和業務 0% ，工程師 50%
-# 績效加給：above average:4000 ，average:2000，below average:0%
+# 職位加給：CEO和業務 為薪水的0% ，工程師為薪水的10%
+# 績效加給：above average:獎金為2000 ，average:獎金為1000，below average:獎金為0
 def calculateSumOfBonus(file):
     data=openFile(file)
     import re
@@ -55,18 +55,19 @@ def calculateSumOfBonus(file):
         
         #績效加給
         if information['performance']=='above average' :
-            information['bouns']=information['bouns']+7000
+            information['bouns']=information['bouns']+2000
         if information['performance']=='average':
-            information['bouns']=information['bouns']+4000
+            information['bouns']=information['bouns']+1000
         if information['performance']=='below average':
             information['bouns']=information['bouns']+0
     return data
     
 print('=== Answer 2 ===')
 answer2=calculateSumOfBonus("question2.json")
+sum=0
 for detil in answer2['employees']:
-    print(f"姓名:{detil['name']},獎金:{detil['bouns']}")
-print()
+    sum+=detil['bouns']
+print(f"總獎金:新台幣{sum}元")
 
 
 
@@ -97,7 +98,18 @@ func("郭宣雅", "林靜宜", "郭宣恆", "林靜花")
 #第四題
 #找出序列的第n項
 def get_number(index):
-    data=[0, 4, 3, 7, 6, 10, 9, 13, 12, 16, 15]
+    total=0
+    data=[]
+    for i in range(index+1):
+        if i==0:
+            data.append(total)
+        elif i%2!=0:
+            total+=4
+            data.append(total)
+        
+        else:
+            total-=1
+            data.append(total)
     print(data[index])
 
 

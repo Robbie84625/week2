@@ -36,8 +36,8 @@ find_and_print(question1);
 /*
 第二題
 以薪水比例為獎金標準：
-職位加給：CEO和業務 0% ，工程師 50%
-績效加給：above average:4000 ，average:2000，below average:0%
+職位加給：CEO和業務 0% ，工程師 10%
+績效加給：above average:2000 ，average:1000，below average:0%
 */ 
 
 function calculateSumOfBonus(data) 
@@ -71,11 +71,11 @@ function calculateSumOfBonus(data)
         // 績效加给
         if (information['performance'] === 'above average')
         {
-            information['bonus'] += 7000;
+            information['bonus'] += 2000;
         }
         if (information['performance'] === 'average') 
         {
-            information['bonus'] += 4000;
+            information['bonus'] += 1000;
         }
         if (information['performance'] === 'below average') 
         {
@@ -86,10 +86,12 @@ function calculateSumOfBonus(data)
 }
 
 console.log('=== Answer 2 ===');
+let sum=0;
 let answer2 = calculateSumOfBonus(question2);
 for (let detail of answer2['employees']) {
-    console.log(`姓名: ${detail['name']}, 獎金: ${detail['bonus']}`);
+    sum+=detail['bonus'];
 };
+console.log(`總獎金: 新台幣${sum}元`);
 
 /*
 第三題
@@ -135,10 +137,29 @@ func("郭宣雅", "林靜宜", "郭宣恆", "林靜花");
 找出序列的第n項
 */
 
-function get_number(index)
-{
-    let data = [0, 4, 3, 7, 6, 10, 9, 13, 12, 16, 15];
-    console.log(data[index])
+function get_number(index) {
+    let total = 0;
+    let data = [];
+
+    for (let i = 0; i <= index; i++) 
+    {
+        if (i === 0) 
+        {
+            data.push(total);
+        } 
+        else if (i % 2 !== 0) 
+        {
+            total += 4;
+            data.push(total);
+        } 
+        else 
+        {
+            total -= 1;
+            data.push(total);
+        }
+    }
+
+    console.log(data[index]);
 }
 
 
