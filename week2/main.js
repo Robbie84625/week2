@@ -10,9 +10,21 @@ vote
 function find_and_print(messages) {
 for (let name in messages) 
     {
-        if (messages[name].includes('18 years old')) 
+        if (messages[name].includes('years old')) 
         {
-        console.log(name);
+            let arr = messages[name].split(' ');
+            for (let index=0;index<=arr.length;index++)
+            {
+                if(arr[index]=='years')
+                {
+                    let age=parseInt(arr[index-1])
+                    if (age>=18)
+                    {
+                        console.log(name);
+                    }
+                }
+            }
+            
         }
         if (messages[name].includes('college student')) 
         {

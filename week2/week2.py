@@ -14,8 +14,13 @@ def openFile(file):
 
 def find_and_print(messages):
     for name in messages:
-        if '18 years old' in messages[name]:
-            print(name)
+        if 'years old' in messages[name]:
+            arr=messages[name].split()
+            for index,content in enumerate(arr):
+                if content=='years':
+                    age=arr[index-1]
+                    if int(age)>=18:
+                        print(name)
         if 'college student' in messages[name]:
             print(name)
         if 'legal age' in messages[name]:
