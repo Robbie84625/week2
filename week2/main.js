@@ -57,9 +57,11 @@ function calculateSumOfBonus(data)
     // 資料清理
     for (let information of data['employees']) 
     {
+        //js 在迭代陣列使用for...of
         // 1 美元 = 30 新台幣，以'USD'清理 並轉換數據類型
         if (information['salary'].toString().includes('USD')) 
         {
+            //假如匹配到非數字將被replace
             information['salary'] = information['salary'].replace(/\D+/g, '') * 30;
         }
 
@@ -116,23 +118,32 @@ function func(...names)
     let dic = {};
     for (let name of names) 
     {
+        //姓名第二個字在物件中為False(表示不再物件中)則放入物件，初始值為0
+        //這個 !(name[1] in dic)等同於(name[1] in dic)===False
         if (!(name[1] in dic)) 
         {
             dic[name[1]] = 0;
-        } else 
+        }
+        //已在物件中，值為1
+        else 
         {
             dic[name[1]] = 1;
         }
     }
+    //宣告布林值
     let find = false;
+    //遍歷無限參數name,在迭代陣列使用for...of
     for (let name of names) 
     {
+        //已在物件中，值未被改為1，表示唯一
         if (dic[name[1]] === 0) 
         {
+            //find改為True表示有找到
             find = true;
             console.log(name);
         }
     }
+    //這個 !find等同於find===false表示沒有找到
     if (!find) 
     {
         console.log('沒有');
@@ -157,16 +168,19 @@ function get_number(index) {
     {
         if (i === 0) 
         {
+            //push 等同於python的append
             data.push(total);
         } 
         else if (i % 2 !== 0) 
         {
             total += 4;
+            //push 等同於python的append
             data.push(total);
         } 
         else 
         {
             total -= 1;
+            //push 等同於python的append
             data.push(total);
         }
     }
@@ -183,6 +197,7 @@ get_number(10);
 //第五題
 function find_index_of_car(seats, status, number) {
     let min_index = null;
+    //min_number=無限大
     let min_number = Infinity;
 
     for (let index = 0; index < seats.length; index++) {
@@ -208,6 +223,50 @@ find_index_of_car([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4);
 find_index_of_car([4, 6, 5, 8], [0, 1, 1, 1], 4);
 console.log();
 
+//找出清單或陣列中兩個整數的最大乘積，而無需使用bulit-in排序函數
+function maxProduct(num){
+    let max_number=-Infinity;
+    for (let i of num){
+        for(let j of num){
+            if (max_number<(i*j) && (i!==j)){
+                max_number=i*j
+            }     
+        }
+    }  
+    console.log(max_number)
+}
+
+
+console.log('=== Answer 6 ===')
+maxProduct([5,20,2,6])
+maxProduct([10,-20,0,3])
+maxProduct([10,-20,0,-3])
+maxProduct([-1,2])
+maxProduct([-1,0,2])
+maxProduct([5,-1,-2,0])
+maxProduct([-5,-2])
+
+//給定一個整數數組，顯示兩個數字的索引，使它們相加達到特定目標。
+//您可以假設每個輸入都有一個解決方案，您不能兩次使用相同的元素。
+function two_sum(nums,target){
+    for(let index1=0;index1<=nums.length;index1++)
+    {
+        for(let index2=0;index2<=nums.length;index2++)
+        {
+            if (index1===index2){
+                continue
+            }
+            else if((nums[index1]+nums[index2])===target)
+            {
+                return `show[${index1},${index2}] because nums[${index1}]+nums[${index2}] is ${target}`;
+            }
+        }
+    }
+}
+
+console.log('=== Answer 7 ===');
+let result=two_sum([2,11,7,15],9);
+console.log(result);
 
 
 

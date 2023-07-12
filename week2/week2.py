@@ -143,4 +143,37 @@ print('=== Answer 5 ===')
 find_index_of_car([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2) 
 find_index_of_car([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4) 
 find_index_of_car([4, 6, 5, 8], [0, 1, 1, 1], 4)
-print() 
+print()
+
+#找出清單或陣列中兩個整數的最大乘積，而無需使用bulit-in排序函數
+def maxProduct(num):
+    max_number=float('-inf')
+    for i in num:
+        for j in num:
+            if max_number<(i*j) and i!=j:
+                max_number=i*j
+    print(max_number)
+
+print('=== Answer 6 ===')
+maxProduct([5,20,2,6])
+maxProduct([10,-20,0,3])
+maxProduct([10,-20,0,-3])
+maxProduct([-1,2])
+maxProduct([-1,0,2])
+maxProduct([5,-1,-2,0])
+maxProduct([-5,-2])
+
+#給定一個整數數組，顯示兩個數字的索引，使它們相加達到特定目標。
+#您可以假設每個輸入都有一個解決方案，您不能兩次使用相同的元素。
+
+def two_sum(nums,target):
+    for index1,num1 in enumerate(nums):
+        for index2,num2 in enumerate(nums):
+            if index1==index2:
+                continue
+            elif (num1+num2)==target:
+                return (f"show[{index1},{index2}]because nums[{index1}]+because nums[{index2}] is {target}")
+
+print('=== Answer 7 ===')
+result=two_sum([2,11,7,15],9)
+print(result)
